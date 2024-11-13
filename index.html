@@ -3,34 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pergunta</title>
+    <title>Confirmação de Presença</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', sans-serif;
-            background-image: url('https://i.ytimg.com/vi/kbHC7YYC3oY/maxresdefault.jpg'); /* Imagem da trilha do Gravatá */
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1681923445357-0679553160da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGppdSUyMGppdHN1fGVufDB8fDB8fHww'); /* Substitua com o link da imagem de tatame azul ou Gracie Barra */
             background-size: cover;
-            background-position: center; /* Centraliza a imagem */
+            background-position: center;
             text-align: center;
             color: white;
-            height: 100vh; /* Faz o corpo ocupar 100% da altura da janela */
-            margin: 0; /* Remove margem padrão do body */
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         h1 {
-            margin-top: 50px;
-            font-size: 3rem;
+            margin-top: 20px;
+            font-size: 2.5rem;
             text-shadow: 2px 2px #000;
         }
 
         .container {
-            margin-top: 150px;
+            margin-top: 30px;
         }
 
         button {
             font-size: 1.5rem;
             padding: 10px 20px;
             margin: 20px;
-            background-color: #00b4d8;
+            background-color: #d32f2f; /* Cor do botão em vermelho para remeter ao símbolo da Gracie Barra */
             border: none;
             color: white;
             cursor: pointer;
@@ -40,27 +44,69 @@
         }
 
         button:hover {
-            background-color: #0077b6;
+            background-color: #b71c1c;
         }
 
-        #noBtn {
-            position: relative;
+        .info {
+            font-size: 1.2rem;
+            margin-top: 30px;
+            text-shadow: 1px 1px #000;
+        }
+
+        .confirmation {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: yellow;
         }
 
         video {
             display: none;
             margin-top: 20px;
             width: 60%;
+            border-radius: 10px;
+        }
+
+        hr {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid white;
+        }
+
+        .time-info {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: white;
+            text-shadow: 1px 1px #000;
         }
     </style>
 </head>
 <body>
 
-    <h1>Você faria a trilha do Gravatá comigo se você fosse essa borboleta e quisesse apertar o "Não"?</h1>
+    <h1>Open mat sábado! Preparado pro tatame da Gracie Barra?</h1>
     
     <div class="container">
-        <button id="yesBtn">Sim</button>
-        <button id="noBtn">Não</button>
+        <button id="yesBtn">vou sim princesa</button>
+        <button id="noBtn">sou frango e queimo rosca</button>
+    </div>
+
+    <hr>
+
+    <div class="time-info">
+        <p><strong>Das 10h às 12h</strong></p>
+    </div>
+
+    <div class="info">
+        <p><strong>Informações importantes:</strong></p>
+        <ul>
+            <li>Beijinho na Vitória: Antes de entrar e sair do tatame, é obrigatória uma saudação com um beijinho na Vitória 😘</li>
+            <li>Piadas de faixa-branca: Sim, elas fazem parte do aprendizado.</li>
+            <li>O armlock pode vir de QUALQUER faixa</li>
+            <li>Dps de ter tomado a maior surra da sua vida é de bom tom cumprimentar o parceiro e agradecer o amasso</li>
+        </ul>
+    </div>
+
+    <div id="confirmationMessage" class="confirmation" style="display: none;">
+        <p><strong>Boa sorte, vai apanhar de mulher! E quanto mais delicada ela parecer, maior vai ser a surra.. CUIDADO com as kids graduadas que nasceram no tatame!!!</strong></p>
     </div>
 
     <video id="funnyVideo" controls>
@@ -71,17 +117,19 @@
     <script>
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
+        const confirmationMessage = document.getElementById('confirmationMessage');
         const funnyVideo = document.getElementById('funnyVideo');
 
-        // Função para mover o botão "Não"
+        // Função para mover o botão "Não" de lugar ao passar o mouse
         noBtn.addEventListener('mouseover', function() {
-            const randomX = Math.floor(Math.random() * window.innerWidth / 2);
-            const randomY = Math.floor(Math.random() * window.innerHeight / 2);
+            const randomX = Math.floor(Math.random() * (window.innerWidth - 200));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - 200));
             noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
         });
 
-        // Função para exibir o vídeo engraçado quando clica no "Sim"
+        // Exibe a mensagem engraçada quando o botão "Sim" é clicado
         yesBtn.addEventListener('click', function() {
+            confirmationMessage.style.display = 'block';
             funnyVideo.style.display = 'block';
             funnyVideo.play();
         });
